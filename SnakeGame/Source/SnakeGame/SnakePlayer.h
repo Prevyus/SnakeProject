@@ -45,6 +45,8 @@ public:
 	TArray<ASpawnableSphere*> Tail;
 
 	UFUNCTION()
+	void SpawnSpheres();
+	UFUNCTION()
 	void SpawnSphere();
 
 protected:
@@ -54,19 +56,19 @@ protected:
 
 	// Variables
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool isPlayer = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float dirChangeDelay = .5f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float RotationSpeed = 360.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MoveForce = 500.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float JumpImpulse = 1000.0f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MoveScale = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float RotateScale = 50;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 MaxJumpCount = 1;
+	int GrowAmount = 10;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
@@ -76,7 +78,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	UPointLightComponent* Light;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
-	USpringArmComponent* SpringArm;
+	USceneComponent* SceneComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* Camera;
 	

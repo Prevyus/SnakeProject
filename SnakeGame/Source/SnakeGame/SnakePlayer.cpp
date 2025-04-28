@@ -8,6 +8,7 @@
 #include "GameFramework/FloatingPawnMovement.h"
 #include "MovieSceneSequenceID.h"
 #include "Components/PointLightComponent.h"
+#include "EntitySystem/MovieSceneEntitySystemRunner.h"
 
 // Sets default values
 ASnakePlayer::ASnakePlayer()
@@ -20,22 +21,27 @@ ASnakePlayer::ASnakePlayer()
 	Sphere->InitSphereRadius(100);
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("SnakeMesh");
 	Light = CreateDefaultSubobject<UPointLightComponent>("Light");
-	SpringArm = CreateDefaultSubobject<USpringArmComponent>("SpringArm");
-	Camera = CreateDefaultSubobject<UCameraComponent>("Camera");
+	SceneComponent = CreateDefaultSubobject<USceneComponent>("SpringArm");
+	if (isPlayer) { Camera = CreateDefaultSubobject<UCameraComponent>("Camera");} 
 	Movement = CreateDefaultSubobject<UFloatingPawnMovement>("Movement");
 
-	//Setup Attachments
+	//Setup Attachments 
 	RootComponent = Sphere;
 	Mesh->SetupAttachment(RootComponent);
 	Light->SetupAttachment(RootComponent);
-	SpringArm->SetupAttachment(RootComponent);
-	Camera->SetupAttachment(SpringArm);
+	SceneComponent->SetupAttachment(RootComponent);
+	if (isPlayer) { Camera->SetupAttachment(SceneComponent); }
 }
 
 // Called when the game starts or when spawned
 void ASnakePlayer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	for(int i = 0; i < 5; i++)
+	{
+		SpawnSpheres();
+	}
 }
 
 // Called every frame
@@ -51,7 +57,6 @@ void ASnakePlayer::Tick(float DeltaTime)
 	UpdateTail();
 }
 
-// Called to bind functionality to input
 void ASnakePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
@@ -63,7 +68,7 @@ void ASnakePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	// FREE MOVEMENT
 	EIC->BindAction(FPC->MoveAction, ETriggerEvent::Triggered, this, &ASnakePlayer::ChangeDirection);
 	//EIC->BindAction(FPC->RotateAction, ETriggerEvent::Triggered, this, &ASnakePlayer::Rotate);
-	EIC->BindAction(FPC->SpawnSphereAction, ETriggerEvent::Started, this, &ASnakePlayer::SpawnSphere);
+	EIC->BindAction(FPC->SpawnSphereAction, ETriggerEvent::Started, this, &ASnakePlayer::SpawnSpheres);
 
 	ULocalPlayer* LocalPlayer = FPC->GetLocalPlayer();
 	check(LocalPlayer);
@@ -75,25 +80,40 @@ void ASnakePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 }
 
-void ASnakePlayer::FreeMove(const struct FInputActionValue& ActionValue)
-{
-	FVector Input = ActionValue.Get<FInputActionValue::Axis3D>();
-	// UFloatingPawnMovement handles scaling this input based on the DeltaTime for this frame.
-	AddMovementInput(GetActorRotation().RotateVector(Input), MoveScale);
-}
-
 void ASnakePlayer::Move()
 {
 	FVector Input(1,0,0);
 	AddMovementInput(GetActorRotation().RotateVector(Input), MoveScale);
 }
 
+void SnapTargetYaw(double& value)
+{
+	TArray<float> ValidYaws = {0.f, 90.f, 180.f, 270.f, -90.f, -180.f, -270.f};
+
+	float CurrentYaw = value;
+	float BestYaw = ValidYaws[0];
+	float SmallestDifference = FMath::Abs(CurrentYaw - BestYaw);
+
+	for (float ValidYaw : ValidYaws)
+	{
+		float Difference = FMath::Abs(CurrentYaw - ValidYaw);
+		if (Difference < SmallestDifference)
+		{
+			SmallestDifference = Difference;
+			BestYaw = ValidYaw;
+		}
+	}
+
+	value = BestYaw;
+}
+
 void ASnakePlayer::ChangeDirection(const struct FInputActionValue& ActionValue)
 {
-	FVector Input = ActionValue.Get<FInputActionValue::Axis3D>();
 	if (dirChangeDelayTimer > 0) return;
+
 	dirChangeDelayTimer = dirChangeDelay;
-	//UE_LOG(LogTemp, Display, TEXT("Input Vector: %s"), *Input.ToString());
+    
+	FVector Input = ActionValue.Get<FInputActionValue::Axis3D>();
 
 	if (Input.X == 1)
 	{
@@ -119,7 +139,7 @@ void ASnakePlayer::ChangeDirection(const struct FInputActionValue& ActionValue)
 
 void ASnakePlayer::Rotate(char direction)
 {
-	TargetRotation = GetActorRotation();
+	//TargetRotation = GetActorRotation();
 
 	switch (direction)
 	{
@@ -129,32 +149,28 @@ void ASnakePlayer::Rotate(char direction)
 	case 'd':
 		TargetRotation.Pitch -= 90.0f;
 		break;
-	case 'l':
-		TargetRotation.Yaw -= 90.0f;
-		break;
 	case 'r':
 		TargetRotation.Yaw += 90.0f;
 		break;
+	case 'l':
+		TargetRotation.Yaw -= 90.0f;
+		break;
+		
+	default:
+		break;
 	}
 
-	// Clamp pitch and lock roll
 	TargetRotation.Pitch = FMath::ClampAngle(TargetRotation.Pitch, -89.9f, 89.9f);
 	TargetRotation.Roll = 0.0f;
 }
 
-
-void ASnakePlayer::FreeRotate(const FInputActionValue& ActionValue)
+void ASnakePlayer::SpawnSpheres()
 {
-    FRotator Input(ActionValue[0], ActionValue[1], ActionValue[2]);
-    Input *= GetWorld()->GetDeltaSeconds() * RotateScale;
-    Input += GetActorRotation();
-    Input.Pitch = FMath::ClampAngle(Input.Pitch, -89.9f, 89.9f);
-	Input.Roll = 0;
-
-	//UE_LOG(LogTemp, Display, TEXT("Input Vector: %s"), *Input.ToString());
-	SetActorRotation(Input);
+	for (int i = 0; i < GrowAmount; i++)
+	{
+		SpawnSphere();
+	}
 }
-
 
 void ASnakePlayer::SpawnSphere()
 {
@@ -170,6 +186,7 @@ void ASnakePlayer::SpawnSphere()
 
 	if (NewSphere)
 	{
+		//NewSphere->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
 		Tail.Add(NewSphere);
 	}
 }
