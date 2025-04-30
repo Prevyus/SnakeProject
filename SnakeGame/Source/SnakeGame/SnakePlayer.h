@@ -30,14 +30,17 @@ public:
 	class UFloatingPawnMovement* Movement;
 	
 	// Functions
-	void FreeMove(const struct FInputActionValue& ActionValue);
 	void Move();
 	void ChangeDirection(const struct FInputActionValue& ActionValue);
 	void Rotate(char direction);
-	void FreeRotate(const struct FInputActionValue& ActionValue);
+
+	void Kill();
 
 	void UpdateTail();
 
+	          
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool isPlayer = false;
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class ASpawnableSphere> SphereClass;
 
@@ -54,9 +57,6 @@ protected:
 	virtual void BeginPlay() override;
 	
 
-	// Variables
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool isPlayer = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float dirChangeDelay = .5f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -71,21 +71,27 @@ protected:
 	int GrowAmount = 10;
 
 private:
+
+	UFUNCTION()
+	virtual void OnBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<USphereComponent> Sphere;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<USphereComponent> Collider;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UStaticMeshComponent> Mesh;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	UPointLightComponent* Light;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* SceneComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
-	UCameraComponent* Camera;
 	
 	//Variables
 	int32 JumpCount = 0;
 	char pastDir = ' ';
 	float dirChangeDelayTimer = 0;
 	FRotator TargetRotation;
+	int collisions = 0;
 	
 };

@@ -9,12 +9,16 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class AActor;
+class UPrimitiveComponent;
+struct FHitResult;
 #ifdef SNAKEGAME_SnakePlayer_generated_h
 #error "SnakePlayer.generated.h already included, missing '#pragma once' in SnakePlayer.h"
 #endif
 #define SNAKEGAME_SnakePlayer_generated_h
 
 #define FID_Users_SantiagoValeraRocha_Desktop_Assignments_C___Unreal_Engine_Snake_Assignment_SnakeProject_SnakeGame_Source_SnakeGame_SnakePlayer_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execOnBeginOverlap); \
 	DECLARE_FUNCTION(execSpawnSphere); \
 	DECLARE_FUNCTION(execSpawnSpheres);
 

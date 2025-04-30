@@ -18,19 +18,20 @@ ASnakePlayer::ASnakePlayer()
 
 	//Create Components
 	Sphere = CreateDefaultSubobject<USphereComponent>("Sphere");
-	Sphere->InitSphereRadius(100);
+	Sphere->InitSphereRadius(50);
+	Collider = CreateDefaultSubobject<USphereComponent>("Collider");
+	Collider->InitSphereRadius(50);
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("SnakeMesh");
 	Light = CreateDefaultSubobject<UPointLightComponent>("Light");
 	SceneComponent = CreateDefaultSubobject<USceneComponent>("SpringArm");
-	if (isPlayer) { Camera = CreateDefaultSubobject<UCameraComponent>("Camera");} 
 	Movement = CreateDefaultSubobject<UFloatingPawnMovement>("Movement");
 
 	//Setup Attachments 
 	RootComponent = Sphere;
+	Collider->SetupAttachment(RootComponent);
 	Mesh->SetupAttachment(RootComponent);
 	Light->SetupAttachment(RootComponent);
 	SceneComponent->SetupAttachment(RootComponent);
-	if (isPlayer) { Camera->SetupAttachment(SceneComponent); }
 }
 
 // Called when the game starts or when spawned
@@ -38,10 +39,22 @@ void ASnakePlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
+	if (Collider)
+	{
+		Collider->OnComponentBeginOverlap.AddDynamic(this, &ASnakePlayer::OnBeginOverlap);
+	}
+
 	for(int i = 0; i < 5; i++)
 	{
 		SpawnSpheres();
 	}
+}
+
+void ASnakePlayer::OnBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	//UE_LOG(LogTemp, Warning, TEXT("%d"), collisions);
+	collisions++;
 }
 
 // Called every frame
@@ -205,5 +218,7 @@ void ASnakePlayer::UpdateTail()
 	}
 }
 
-
-
+void ASnakePlayer::Kill()
+{
+	
+}
