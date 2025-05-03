@@ -5,8 +5,9 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
-				"C:/Users/SantiagoValeraRocha/Desktop/Assignments/C++/Unreal Engine Snake Assignment/SnakeProject/SnakeGame/Content/MySnakePlayer.uasset",
 				"C:/Program Files/Epic Games/UE_5.5/Engine/Content/BasicShapes/Sphere.uasset",
+				"C:/Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Content/MyTestCube.uasset",
+				"C:/Users/SantiagoValeraRocha/Desktop/Assignments/C++/Unreal Engine Snake Assignment/SnakeProject/SnakeGame/Content/MySnakePlayer.uasset",
 				"C:/Users/SantiagoValeraRocha/Desktop/Assignments/C++/Unreal Engine Snake Assignment/SnakeProject/SnakeGame/Content/GamemodeBP.uasset",
 				"C:/Users/SantiagoValeraRocha/Desktop/Assignments/C++/Unreal Engine Snake Assignment/SnakeProject/SnakeGame/Content/__ExternalActors__/TestingMap/1/3J/KJPK952SX0051OZDJD9FR5.uasset",
 				"C:/Users/SantiagoValeraRocha/Desktop/Assignments/C++/Unreal Engine Snake Assignment/SnakeProject/SnakeGame/Content/MySpawnableSphere.uasset",
