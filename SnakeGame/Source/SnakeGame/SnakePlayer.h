@@ -11,6 +11,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "SnakePlayer.generated.h"
 
+class UBoxComponent;
+
 UCLASS()
 class SNAKEGAME_API ASnakePlayer : public APawn
 {
@@ -40,7 +42,8 @@ public:
 
 
 	float dirChangeDelayTimer = 0;
-	char worldDir = 'X';
+	char horWorldDir = 'X';
+	char verWorldDir = 'm';
 	bool binaryTurned = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isPlayer = false;
@@ -81,7 +84,7 @@ private:
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<USphereComponent> Sphere;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<USphereComponent> Collider;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UStaticMeshComponent> Mesh;

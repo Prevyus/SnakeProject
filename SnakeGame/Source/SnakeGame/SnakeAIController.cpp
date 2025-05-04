@@ -1,4 +1,6 @@
 #include "SnakeAIController.h"
+#include "Apple.h"
+#include "Kismet/GameplayStatics.h"
 #include "SnakePlayer.h"
 
 void ASnakeAIController::BeginPlay()
@@ -28,44 +30,88 @@ void ASnakeAIController::Tick(float DeltaTime)
 	}
 }
 
-bool verticalTurn = false;
+//int testing = 0;
+//bool verticalTurn = false;
 void ASnakeAIController::MakeDecision()
 {
 	if (!ControlledSnake) return;
 	if (ControlledSnake->dirChangeDelayTimer > 0) return;
-	verticalTurn = !verticalTurn;
-	
+
+	TArray<AActor*> Apples;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AApple::StaticClass(), Apples);
+
+	if (Apples.Num() == 0) return;
+
 	FVector SnakeLocation = ControlledSnake->GetActorLocation();
+	AActor* ClosestApple = nullptr;
+	float MinDist = FLT_MAX;
+
+	for (AActor* Apple : Apples)
+	{
+		float Dist = FVector::Dist(SnakeLocation, Apple->GetActorLocation());
+		if (Dist < MinDist)
+		{
+			MinDist = Dist;
+			ClosestApple = Apple;
+		}
+	}
+
+	if (ClosestApple)
+	{
+		targetPos = ClosestApple->GetActorLocation();
+	}
+	
+	//verticalTurn = !verticalTurn;
+	
 	FVector DirectionToTarget = targetPos - SnakeLocation;
 
 	float DeltaX = DirectionToTarget.X;
 	float DeltaY = DirectionToTarget.Y;
 	float DeltaZ = DirectionToTarget.Z;
+
 	
 	//UE_LOG(LogTemp, Warning, TEXT("x %f, y %f, z %f"), DeltaX,DeltaY,DeltaZ);
+	//UE_LOG(LogTemp, Warning, TEXT("Z %f"), DeltaZ);
 
-	if (!verticalTurn)
+	if (!(FMath::Abs(DeltaX) < 300 && FMath::Abs(DeltaY) < 300))//FMath::Abs(DeltaZ) < 100 || verticalTurn)
 	{
-		if (DeltaX > DeltaY)
+		//UE_LOG(LogTemp, Warning, TEXT("hor %d"), testing);
+		//testing++;
+		
+		//UE_LOG(LogTemp, Warning, TEXT("dir %c"), (TCHAR)ControlledSnake->verWorldDir);
+		if (ControlledSnake->verWorldDir == 'u')
+		{
+			ControlledSnake->Rotate('d');
+			return;
+		}
+		if (ControlledSnake->verWorldDir == 'd')
+		{
+			ControlledSnake->Rotate('u');
+			return;
+		}
+		
+		if (FMath::Abs(DeltaX) > FMath::Abs(DeltaY))
 		{
 			if (DeltaX > 0)
 			{
-				if (ControlledSnake->worldDir == 'x' || ControlledSnake->worldDir == 'y')
+				//UE_LOG(LogTemp, Warning, TEXT("X+ | %c"), (TCHAR)ControlledSnake->worldDir);
+				if (ControlledSnake->horWorldDir == 'x' || ControlledSnake->horWorldDir == 'y')
 				{
 					ControlledSnake->Rotate('r');
 				}
-				else if (ControlledSnake->worldDir == 'Y')
+				else if (ControlledSnake->horWorldDir == 'Y')
 				{
 					ControlledSnake->Rotate('l');
 				}
 			}
 			else
 			{
-				if (ControlledSnake->worldDir == 'X' || ControlledSnake->worldDir == 'Y')
+				//UE_LOG(LogTemp, Warning, TEXT("x- | %c"), (TCHAR)ControlledSnake->worldDir);
+				if (ControlledSnake->horWorldDir == 'X' || ControlledSnake->horWorldDir == 'Y')
 				{
 					ControlledSnake->Rotate('r');
 				}
-				else if (ControlledSnake->worldDir == 'y')
+				else if (ControlledSnake->horWorldDir == 'y')
 				{
 					ControlledSnake->Rotate('l');
 				}
@@ -75,30 +121,34 @@ void ASnakeAIController::MakeDecision()
 		{
 			if (DeltaY > 0)
 			{
-				if (ControlledSnake->worldDir == 'y' || ControlledSnake->worldDir == 'X')
+				//UE_LOG(LogTemp, Warning, TEXT("Y+ | %c"), (TCHAR)ControlledSnake->worldDir);
+				if (ControlledSnake->horWorldDir == 'y' || ControlledSnake->horWorldDir == 'X')
 				{
 					ControlledSnake->Rotate('r');
 				}
-				else if (ControlledSnake->worldDir == 'x')
+				else if (ControlledSnake->horWorldDir == 'x')
 				{
 					ControlledSnake->Rotate('l');
 				}
 			}
 			else
 			{
-				if (ControlledSnake->worldDir == 'Y' || ControlledSnake->worldDir == 'x')
+				//UE_LOG(LogTemp, Warning, TEXT("y- | %c"), (TCHAR)ControlledSnake->worldDir);
+				if (ControlledSnake->horWorldDir == 'Y' || ControlledSnake->horWorldDir == 'x')
 				{
 					ControlledSnake->Rotate('r');
 				}
-				else if (ControlledSnake->worldDir == 'X')
+				else if (ControlledSnake->horWorldDir == 'X')
 				{
 					ControlledSnake->Rotate('l');
 				}
 			}
 		}
 	}
-	else
+	else// if (FMath::Abs(DeltaZ) <= 400)
 	{
+		//UE_LOG(LogTemp, Warning, TEXT("ver %d"), testing);
+		//testing++;
 		if (DeltaZ != 0)
 		{
 			if (DeltaZ > 0)

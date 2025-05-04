@@ -37,6 +37,8 @@
 /FUNCTIONPADMIN:6
 /NOIMPLIB
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\SnakeGameEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderUnreal5_3.h.obj"
+"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\Apple.gen.cpp.obj"
+"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\GameStateManager.gen.cpp.obj"
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeAIController.gen.cpp.obj"
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGame.init.gen.cpp.obj"
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGamemode.gen.cpp.obj"
@@ -47,6 +49,8 @@
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakePlayerController.cpp.obj"
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SpawnableSphere.cpp.obj"
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\PerModuleInline.gen.cpp.obj"
+"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\Apple.cpp.obj"
+"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\GameStateManager.cpp.obj"
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeAIController.cpp.obj"
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGamemode.cpp.obj"
 "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakePlayer.cpp.obj"

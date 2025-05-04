@@ -2,6 +2,7 @@
 
 #include "SpawnableSphere.h"
 #include "SnakePlayer.h"
+#include "Apple.h"
 #include "SnakePlayerController.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
@@ -55,6 +56,12 @@ void ASnakePlayer::OnBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* O
 {
 	//UE_LOG(LogTemp, Warning, TEXT("%d"), collisions);
 	collisions++;
+	
+	if (OtherActor->IsA(AApple::StaticClass()))
+	{
+		OtherActor->Destroy();
+		SpawnSpheres(); // Grow snake
+	}
 }
 
 // Called every frame
@@ -155,17 +162,19 @@ void ASnakePlayer::Rotate(char direction)
 	switch (direction)
 	{
 	case 'u':
+		verWorldDir = UpdateWorldDirection(verWorldDir, 'u');
 		TargetRotation.Pitch += 90.0f;
 		break;
 	case 'd':
+		verWorldDir = UpdateWorldDirection(verWorldDir, 'd');
 		TargetRotation.Pitch -= 90.0f;
 		break;
 	case 'r':
-		worldDir = UpdateWorldDirection(worldDir, 'r');
+		horWorldDir = UpdateWorldDirection(horWorldDir, 'r');
 		TargetRotation.Yaw += 90.0f;
 		break;
 	case 'l':
-		worldDir = UpdateWorldDirection(worldDir, 'l');
+		horWorldDir = UpdateWorldDirection(horWorldDir, 'l');
 		TargetRotation.Yaw -= 90.0f;
 		break;
 		
@@ -239,6 +248,39 @@ char ASnakePlayer::UpdateWorldDirection(char currDir, char rotation)
 		else if (rotation == 'u' || rotation == 'd')
 		{
 			return 'y';
+		}
+		break;
+
+	case 'u':
+		if (rotation == 'u')
+		{
+			return 'u';
+		}
+		else if (rotation == 'd')
+		{
+			return 'm';
+		}
+		break;
+
+	case 'm':
+		if (rotation == 'u')
+		{
+			return 'u';
+		}
+		else if (rotation == 'd')
+		{
+			return 'd';
+		}
+		break;
+
+	case 'd':
+		if (rotation == 'u')
+		{
+			return 'm';
+		}
+		else if (rotation == 'd')
+		{
+			return 'd';
 		}
 		break;
 	}
