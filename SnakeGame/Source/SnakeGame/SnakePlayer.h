@@ -33,12 +33,15 @@ public:
 	void Move();
 	void ChangeDirection(const struct FInputActionValue& ActionValue);
 	void Rotate(char direction);
-
+	char UpdateWorldDirection (char currDir, char rotation);
 	void Kill();
 
 	void UpdateTail();
 
-	          
+
+	float dirChangeDelayTimer = 0;
+	char worldDir = 'X';
+	bool binaryTurned = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isPlayer = false;
 	UPROPERTY(EditDefaultsOnly)
@@ -90,7 +93,6 @@ private:
 	//Variables
 	int32 JumpCount = 0;
 	char pastDir = ' ';
-	float dirChangeDelayTimer = 0;
 	FRotator TargetRotation;
 	int collisions = 0;
 	

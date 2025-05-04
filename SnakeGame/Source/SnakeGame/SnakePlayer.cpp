@@ -123,36 +123,34 @@ void SnapTargetYaw(double& value)
 void ASnakePlayer::ChangeDirection(const struct FInputActionValue& ActionValue)
 {
 	if (dirChangeDelayTimer > 0) return;
-
-	dirChangeDelayTimer = dirChangeDelay;
-    
+	
 	FVector Input = ActionValue.Get<FInputActionValue::Axis3D>();
 
 	if (Input.X == 1)
 	{
-		pastDir = 'u';
-		Rotate(pastDir);
+		Rotate('u');
 	}
 	else if (Input.X == -1)
 	{
-		pastDir = 'd';
-		Rotate(pastDir);
+		Rotate('d');
 	}
 	else if (Input.Y == 1)
 	{
-		pastDir = 'r';
-		Rotate(pastDir);
+		Rotate('r');
 	}
 	else if (Input.Y == -1)
 	{
-		pastDir = 'l';
-		Rotate(pastDir);
+		Rotate('l');
 	}
 }
 
 void ASnakePlayer::Rotate(char direction)
 {
-	//TargetRotation = GetActorRotation();
+	if (dirChangeDelayTimer > 0) return;
+
+	dirChangeDelayTimer = dirChangeDelay;
+	
+	pastDir = direction;
 
 	switch (direction)
 	{
@@ -163,9 +161,11 @@ void ASnakePlayer::Rotate(char direction)
 		TargetRotation.Pitch -= 90.0f;
 		break;
 	case 'r':
+		worldDir = UpdateWorldDirection(worldDir, 'r');
 		TargetRotation.Yaw += 90.0f;
 		break;
 	case 'l':
+		worldDir = UpdateWorldDirection(worldDir, 'l');
 		TargetRotation.Yaw -= 90.0f;
 		break;
 		
@@ -173,9 +173,78 @@ void ASnakePlayer::Rotate(char direction)
 		break;
 	}
 
+	binaryTurned = !binaryTurned;
 	TargetRotation.Pitch = FMath::ClampAngle(TargetRotation.Pitch, -89.9f, 89.9f);
 	TargetRotation.Roll = 0.0f;
 }
+
+char ASnakePlayer::UpdateWorldDirection(char currDir, char rotation)
+{
+	switch (currDir)
+	{
+	case 'X':
+		if (rotation == 'r')
+		{
+			return 'Y';
+		}
+		else if (rotation == 'l')
+		{
+			return 'y';
+		}
+		else if (rotation == 'u' || rotation == 'd')
+		{
+			return 'X';
+		}
+		break;
+
+	case 'x':
+		if (rotation == 'r')
+		{
+			return 'y';
+		}
+		else if (rotation == 'l')
+		{
+			return 'Y';
+		}
+		else if (rotation == 'u' || rotation == 'd')
+		{
+			return 'x';
+		}
+		break;
+
+	case 'Y':
+		if (rotation == 'r')
+		{
+			return 'x';
+		}
+		else if (rotation == 'l')
+		{
+			return 'X';
+		}
+		else if (rotation == 'u' || rotation == 'd')
+		{
+			return 'Y';
+		}
+		break;
+
+	case 'y':
+		if (rotation == 'r')
+		{
+			return 'X';
+		}
+		else if (rotation == 'l')
+		{
+			return 'x';
+		}
+		else if (rotation == 'u' || rotation == 'd')
+		{
+			return 'y';
+		}
+		break;
+	}
+	return ' ';
+}
+
 
 void ASnakePlayer::SpawnSpheres()
 {
