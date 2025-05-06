@@ -1,12 +1,12 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\santi\\onedrive\\escritorio\\github\\snakeproject\\snakegame\\source\\snakegame\\snakegame.cpp",
+        "Source": "c:\\users\\santiagovalerarocha\\desktop\\assignments\\c++\\unreal engine snake assignment\\snakeproject\\snakegame\\source\\snakegame\\snakegame.cpp",
         "ProvidedModule": "",
-        "PCH": "c:\\users\\santi\\onedrive\\escritorio\\github\\snakeproject\\snakegame\\intermediate\\build\\win64\\x64\\snakegameeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.inclorderunreal5_3.h.pch",
+        "PCH": "c:\\users\\santiagovalerarocha\\desktop\\assignments\\c++\\unreal engine snake assignment\\snakeproject\\snakegame\\intermediate\\build\\win64\\x64\\snakegameeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.inclorderunreal5_3.h.pch",
         "Includes": [
-            "c:\\users\\santi\\onedrive\\escritorio\\github\\snakeproject\\snakegame\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\snakegame\\definitions.snakegame.h",
-            "c:\\users\\santi\\onedrive\\escritorio\\github\\snakeproject\\snakegame\\source\\snakegame\\snakegame.h"
+            "c:\\users\\santiagovalerarocha\\desktop\\assignments\\c++\\unreal engine snake assignment\\snakeproject\\snakegame\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\snakegame\\definitions.snakegame.h",
+            "c:\\users\\santiagovalerarocha\\desktop\\assignments\\c++\\unreal engine snake assignment\\snakeproject\\snakegame\\source\\snakegame\\snakegame.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

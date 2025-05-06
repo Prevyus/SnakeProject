@@ -1,13 +1,16 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "SpawnableSphere.h"
 #include "SnakePlayer.h"
+#include "SpawnableSphere.h"
 #include "Apple.h"
 #include "SnakePlayerController.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "GameFramework/FloatingPawnMovement.h"
 #include "MovieSceneSequenceID.h"
+#include "GameStateManager.h"
+#include "Kismet/GameplayStatics.h"
+#include "SnakeGamemode.h"
 #include "Components/PointLightComponent.h"
 #include "EntitySystem/MovieSceneEntitySystemRunner.h"
 
@@ -40,6 +43,9 @@ void ASnakePlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
+	AGameStateManager* GameStateManager = Cast<AGameStateManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AGameStateManager::StaticClass()));
+
+
 	if (Collider)
 	{
 		Collider->OnComponentBeginOverlap.AddDynamic(this, &ASnakePlayer::OnBeginOverlap);
@@ -68,6 +74,11 @@ void ASnakePlayer::OnBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* O
 void ASnakePlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	ASnakeGamemode* GameMode = Cast<ASnakeGamemode>(UGameplayStatics::GetGameMode(this));
+	if (!GameMode || !GameMode->GameStateManager) return;
+	if (GameMode->GameStateManager->CurrentState != EGameState::Game) return;
+	
 	if (dirChangeDelayTimer > 0) dirChangeDelayTimer -= DeltaTime;
 
 	FRotator NewRotation = FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaTime, RotationSpeed);
@@ -89,6 +100,9 @@ void ASnakePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	EIC->BindAction(FPC->MoveAction, ETriggerEvent::Triggered, this, &ASnakePlayer::ChangeDirection);
 	//EIC->BindAction(FPC->RotateAction, ETriggerEvent::Triggered, this, &ASnakePlayer::Rotate);
 	EIC->BindAction(FPC->SpawnSphereAction, ETriggerEvent::Started, this, &ASnakePlayer::SpawnSpheres);
+	
+	EIC->BindAction(FPC->ChangeStateAction, ETriggerEvent::Started, this, &ASnakePlayer::TestChangeState);  // Replace Jump with your function
+
 
 	ULocalPlayer* LocalPlayer = FPC->GetLocalPlayer();
 	check(LocalPlayer);
@@ -99,6 +113,40 @@ void ASnakePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	Subsystem->AddMappingContext(FPC->PawnMappingContext, 0);
 
 }
+
+void ASnakePlayer::TestChangeState()
+{
+	AGameStateManager* GameStateManager = Cast<AGameStateManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AGameStateManager::StaticClass()));
+	if (!GameStateManager)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("GameStateManager not found"));
+		return;
+	}
+
+	EGameState CurrentState = GameStateManager->CurrentState;
+	EGameState NewState;
+
+	switch (CurrentState)
+	{
+	case EGameState::MainMenu:
+		NewState = EGameState::Game;
+		break;
+	case EGameState::Game:
+		NewState = EGameState::Outro;
+		break;
+	case EGameState::Outro:
+	default:
+		NewState = EGameState::MainMenu;
+		break;
+	}
+
+	GameStateManager->SetGameState(NewState);
+
+	UE_LOG(LogTemp, Warning, TEXT("Switched to state: %d"), static_cast<uint8>(NewState));
+}
+
+
+
 
 void ASnakePlayer::Move()
 {

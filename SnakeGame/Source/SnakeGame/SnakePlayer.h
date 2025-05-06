@@ -9,6 +9,8 @@
 #include "Camera/CameraComponent.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "GameStateManager.h"
+#include "Kismet/GameplayStatics.h"
 #include "SnakePlayer.generated.h"
 
 class UBoxComponent;
@@ -37,6 +39,8 @@ public:
 	void Rotate(char direction);
 	char UpdateWorldDirection (char currDir, char rotation);
 	void Kill();
+
+	void TestChangeState();
 
 	void UpdateTail();
 

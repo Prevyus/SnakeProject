@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\santi\\OneDrive\\Escritorio\\Github\\SnakeProject\\SnakeGame\\Source\\SnakeGame\\SnakeGame.Build.cs",
-		"C:\\Users\\santi\\OneDrive\\Escritorio\\Github\\SnakeProject\\SnakeGame\\Source\\SnakeGame.Target.cs",
-		"C:\\Users\\santi\\OneDrive\\Escritorio\\Github\\SnakeProject\\SnakeGame\\Source\\SnakeGameEditor.Target.cs"
+		"C:\\Users\\SantiagoValeraRocha\\Desktop\\Assignments\\C++\\Unreal Engine Snake Assignment\\SnakeProject\\SnakeGame\\Source\\SnakeGame\\SnakeGame.Build.cs",
+		"C:\\Users\\SantiagoValeraRocha\\Desktop\\Assignments\\C++\\Unreal Engine Snake Assignment\\SnakeProject\\SnakeGame\\Source\\SnakeGame.Target.cs",
+		"C:\\Users\\SantiagoValeraRocha\\Desktop\\Assignments\\C++\\Unreal Engine Snake Assignment\\SnakeProject\\SnakeGame\\Source\\SnakeGameEditor.Target.cs"
 	],
 	"EngineVersion": "5.5.4"
 }

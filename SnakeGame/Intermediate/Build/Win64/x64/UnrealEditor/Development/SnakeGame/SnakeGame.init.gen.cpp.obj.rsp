@@ -1,12 +1,12 @@
-"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\UnrealEditor\Inc\SnakeGame\UHT\SnakeGame.init.gen.cpp"
-/FI"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\SnakeGameEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderUnreal5_3.h"
-/FI"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\Definitions.SnakeGame.h"
-/Yu"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\SnakeGameEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderUnreal5_3.h"
-/Fp"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\SnakeGameEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderUnreal5_3.h.pch"
-/Fo"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGame.init.gen.cpp.obj"
-/experimental:log "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGame.init.gen.cpp.sarif"
-/sourceDependencies "C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGame.init.gen.cpp.dep.json"
-@"C:\Users\santi\OneDrive\Escritorio\Github\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGame.Shared.rsp"
+"C:\Users\SantiagoValeraRocha\Desktop\Assignments\C++\Unreal Engine Snake Assignment\SnakeProject\SnakeGame\Intermediate\Build\Win64\UnrealEditor\Inc\SnakeGame\UHT\SnakeGame.init.gen.cpp"
+/FI"C:\Users\SantiagoValeraRocha\Desktop\Assignments\C++\Unreal Engine Snake Assignment\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\SnakeGameEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderUnreal5_3.h"
+/FI"C:\Users\SantiagoValeraRocha\Desktop\Assignments\C++\Unreal Engine Snake Assignment\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\Definitions.SnakeGame.h"
+/Yu"C:\Users\SantiagoValeraRocha\Desktop\Assignments\C++\Unreal Engine Snake Assignment\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\SnakeGameEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderUnreal5_3.h"
+/Fp"C:\Users\SantiagoValeraRocha\Desktop\Assignments\C++\Unreal Engine Snake Assignment\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\SnakeGameEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderUnreal5_3.h.pch"
+/Fo"C:\Users\SantiagoValeraRocha\Desktop\Assignments\C++\Unreal Engine Snake Assignment\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGame.init.gen.cpp.obj"
+/experimental:log "C:\Users\SantiagoValeraRocha\Desktop\Assignments\C++\Unreal Engine Snake Assignment\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGame.init.gen.cpp.sarif"
+/sourceDependencies "C:\Users\SantiagoValeraRocha\Desktop\Assignments\C++\Unreal Engine Snake Assignment\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGame.init.gen.cpp.dep.json"
+@"C:\Users\SantiagoValeraRocha\Desktop\Assignments\C++\Unreal Engine Snake Assignment\SnakeProject\SnakeGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\SnakeGame\SnakeGame.Shared.rsp"
 /d2ssa-cfg-question-
 /Zc:inline
 /nologo

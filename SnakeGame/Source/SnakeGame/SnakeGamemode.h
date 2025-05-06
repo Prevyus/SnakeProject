@@ -1,15 +1,17 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "GameStateManager.h"
+#include "Blueprint/UserWidget.h"
 #include "SnakeGamemode.generated.h"
 
-/**
- * 
- */
+// Forward declarations
+class ASnakePlayer;
+class ASnakeAIController;
+class AApple;
+class UUserWidget;
+
 UCLASS()
 class SNAKEGAME_API ASnakeGamemode : public AGameModeBase
 {
@@ -18,33 +20,39 @@ class SNAKEGAME_API ASnakeGamemode : public AGameModeBase
 public:
 	virtual void BeginPlay() override;
 
+	/** Player and AI snake setup */
 	UPROPERTY(EditDefaultsOnly, Category = "Snake")
-	TSubclassOf<class ASnakePlayer> SnakePawnClass;
+	TSubclassOf<ASnakePlayer> SnakePawnClass;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Snake")
-	TSubclassOf<class ASnakeAIController> SnakeAIControllerClass;
+	TSubclassOf<ASnakeAIController> SnakeAIControllerClass;
 
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<class AApple> AppleClass;
+	/** Apple spawning */
+	UPROPERTY(EditDefaultsOnly, Category = "Snake")
+	TSubclassOf<AApple> AppleClass;
 
 	FTimerHandle AppleSpawnTimer;
-
 	void SpawnApple();
-	
+
+	/** Reference to the game state manager */
 	UPROPERTY()
 	AGameStateManager* GameStateManager;
 
-	// Optionally store widget references
-	// UPROPERTY(EditAnywhere)
-	// TSubclassOf<class UUserWidget> MainMenuWidgetClass;
-	//
-	// UPROPERTY(EditAnywhere)
-	// TSubclassOf<class UUserWidget> GameWidgetClass;
-	//
-	// UPROPERTY(EditAnywhere)
-	// TSubclassOf<class UUserWidget> OutroWidgetClass;
-	//
-	// UUserWidget* CurrentWidget;
-	//
-	// void ShowWidget(TSubclassOf<UUserWidget> WidgetClass);
+	/** UI Widgets for each state */
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> MainMenuWidgetClass;
+
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> GameWidgetClass;
+
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> OutroWidgetClass;
+
+	/** Currently active widget */
+	UPROPERTY()
+	UUserWidget* CurrentWidget;
+
+	/** Function to show a widget */
+	UFUNCTION(BlueprintCallable)
+	void ShowWidget(TSubclassOf<UUserWidget> WidgetClass);
 };

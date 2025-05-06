@@ -16,7 +16,7 @@ UCLASS()
 class SNAKEGAME_API AGameStateManager : public AActor
 {
 	GENERATED_BODY()
-	
+
 public:
 	AGameStateManager();
 

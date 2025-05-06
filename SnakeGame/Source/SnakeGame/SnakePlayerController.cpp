@@ -43,6 +43,10 @@ void ASnakePlayerController::SetupInputComponent()
     MapKey(PawnMappingContext, MoveAction, EKeys::D, false, true);
     MapKey(PawnMappingContext, MoveAction, EKeys::SpaceBar, false, true, EInputAxisSwizzle::ZYX);
     MapKey(PawnMappingContext, MoveAction, EKeys::LeftShift, true, true, EInputAxisSwizzle::ZYX);
+
+    ChangeStateAction = NewObject<UInputAction>(this);
+    ChangeStateAction->ValueType = EInputActionValueType::Boolean;
+    MapKey(PawnMappingContext, ChangeStateAction, EKeys::F);
     
     RotateAction = NewObject<UInputAction>(this);
     RotateAction->ValueType = EInputActionValueType::Axis3D;
