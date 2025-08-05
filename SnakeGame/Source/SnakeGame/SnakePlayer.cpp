@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "SnakePlayer.h"
+#include "MyMacros.h"
 #include "SpawnableSphere.h"
 #include "Apple.h"
 #include "SnakePlayerController.h"
@@ -51,7 +52,7 @@ void ASnakePlayer::BeginPlay()
 		Collider->OnComponentBeginOverlap.AddDynamic(this, &ASnakePlayer::OnBeginOverlap);
 	}
 
-	for(int i = 0; i < 5; i++)
+	for(int i = 0; i < 3; i++)
 	{
 		SpawnSpheres();
 	}
@@ -101,8 +102,8 @@ void ASnakePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	//EIC->BindAction(FPC->RotateAction, ETriggerEvent::Triggered, this, &ASnakePlayer::Rotate);
 	EIC->BindAction(FPC->SpawnSphereAction, ETriggerEvent::Started, this, &ASnakePlayer::SpawnSpheres);
 	
-	EIC->BindAction(FPC->ChangeStateAction, ETriggerEvent::Started, this, &ASnakePlayer::TestChangeState);  // Replace Jump with your function
-
+	EIC->BindAction(FPC->ChangeStateAction, ETriggerEvent::Started, this, &ASnakePlayer::TestChangeState);
+.
 
 	ULocalPlayer* LocalPlayer = FPC->GetLocalPlayer();
 	check(LocalPlayer);
