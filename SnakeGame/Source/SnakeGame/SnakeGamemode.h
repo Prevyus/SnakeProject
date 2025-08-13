@@ -6,7 +6,6 @@
 #include "Blueprint/UserWidget.h"
 #include "SnakeGamemode.generated.h"
 
-// Forward declarations
 class ASnakePlayer;
 class ASnakeAIController;
 class AApple;
@@ -19,26 +18,30 @@ class SNAKEGAME_API ASnakeGamemode : public AGameModeBase
 	
 public:
 	virtual void BeginPlay() override;
+	
+	ASnakeGamemode();
 
-	/** Player and AI snake setup */
+	UFUNCTION(BlueprintCallable, Category="Level|Geometry")
+	void GenerateLevelGeometry(int32 Level);
+
 	UPROPERTY(EditDefaultsOnly, Category = "Snake")
 	TSubclassOf<ASnakePlayer> SnakePawnClass;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Snake")
 	TSubclassOf<ASnakeAIController> SnakeAIControllerClass;
 
-	/** Apple spawning */
 	UPROPERTY(EditDefaultsOnly, Category = "Snake")
 	TSubclassOf<AApple> AppleClass;
 
 	FTimerHandle AppleSpawnTimer;
 	void SpawnApple();
 
-	/** Reference to the game state manager */
+	UPROPERTY(EditDefaultsOnly, Category = "Snake")
+	float AppleSpawnRate = 1;
+
 	UPROPERTY()
 	AGameStateManager* GameStateManager;
 
-	/** UI Widgets for each state */
 	UPROPERTY(EditAnywhere, Category = "UI")
 	TSubclassOf<UUserWidget> MainMenuWidgetClass;
 
@@ -48,11 +51,31 @@ public:
 	UPROPERTY(EditAnywhere, Category = "UI")
 	TSubclassOf<UUserWidget> OutroWidgetClass;
 
-	/** Currently active widget */
 	UPROPERTY()
 	UUserWidget* CurrentWidget;
 
-	/** Function to show a widget */
 	UFUNCTION(BlueprintCallable)
 	void ShowWidget(TSubclassOf<UUserWidget> WidgetClass);
+
+protected:
+	
+	void ClearLevelGeometry();
+
+	UPROPERTY(EditDefaultsOnly, Category="Level|Geometry")
+	float BaseHalfExtentX = 4000.f;
+
+	UPROPERTY(EditDefaultsOnly, Category="Level|Geometry")
+	float BaseHalfExtentY = 3000.f;
+
+	UPROPERTY(EditDefaultsOnly, Category="Level|Geometry")
+	float CeilingHeight = 400.f;
+
+	UPROPERTY(EditDefaultsOnly, Category="Level|Geometry")
+	float WallThickness = 100.f;
+
+	UPROPERTY()
+	TArray<AActor*> SpawnedGeometry;
+
+	UPROPERTY()
+	UStaticMesh* CubeMesh = nullptr;
 };

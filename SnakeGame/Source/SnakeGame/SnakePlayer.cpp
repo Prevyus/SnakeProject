@@ -103,7 +103,6 @@ void ASnakePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	EIC->BindAction(FPC->SpawnSphereAction, ETriggerEvent::Started, this, &ASnakePlayer::SpawnSpheres);
 	
 	EIC->BindAction(FPC->ChangeStateAction, ETriggerEvent::Started, this, &ASnakePlayer::TestChangeState);
-.
 
 	ULocalPlayer* LocalPlayer = FPC->GetLocalPlayer();
 	check(LocalPlayer);
