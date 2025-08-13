@@ -3,6 +3,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "NiagaraSystem.h"
 #include "Apple.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAppleEaten, AApple*, Apple);
@@ -17,6 +18,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Events")
 	FOnAppleEaten OnAppleEaten;
+	
+	UPROPERTY(EditAnywhere, Category="Effects")
+	UNiagaraSystem* EatAppleEffect;
 
 protected:
 	virtual void BeginPlay() override;

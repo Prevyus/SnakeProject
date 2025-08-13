@@ -2,6 +2,8 @@
 #include "Apple.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "NiagaraFunctionLibrary.h"
+#include "Kismet/GameplayStatics.h"
 
 AApple::AApple()
 {
@@ -23,5 +25,15 @@ void AApple::BeginPlay()
 
 void AApple::HandleEaten(AApple* Apple)
 {
+	if (EatAppleEffect)
+	{
+		UNiagaraFunctionLibrary::SpawnSystemAtLocation(
+			GetWorld(),
+			EatAppleEffect,
+			GetActorLocation(),  // Effect location
+			GetActorRotation()   // Effect rotation
+		);
+	}
+	
 	Apple->Destroy();
 }
