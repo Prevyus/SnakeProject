@@ -11,6 +11,7 @@
 #include "MovieSceneSequenceID.h"
 #include "GameStateManager.h"
 #include "Kismet/GameplayStatics.h"
+#include "Engine/StaticMeshActor.h"
 #include "SnakeGamemode.h"
 #include "Components/PointLightComponent.h"
 #include "EntitySystem/MovieSceneEntitySystemRunner.h"
@@ -61,8 +62,16 @@ void ASnakePlayer::BeginPlay()
 void ASnakePlayer::OnBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	//UE_LOG(LogTemp, Warning, TEXT("%d"), collisions);
 	collisions++;
+	
+	if (OtherActor && OtherActor != this)
+	{
+		if (OtherActor->IsA(AStaticMeshActor::StaticClass()))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Snake hit wall!"));
+			Kill();
+		}
+	}
 	
 	if (OtherActor->IsA(AApple::StaticClass()))
 	{
@@ -383,5 +392,20 @@ void ASnakePlayer::UpdateTail()
 
 void ASnakePlayer::Kill()
 {
-	
+	for (ASpawnableSphere* Segment : Tail)
+	{
+		if (IsValid(Segment))
+		{
+			Segment->Destroy();
+		}
+	}
+	Tail.Empty();
+
+	ASnakeGamemode* GameMode = Cast<ASnakeGamemode>(UGameplayStatics::GetGameMode(this));
+	if (GameMode)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%s has died"), *GetName());
+	}
+
+	Destroy();
 }

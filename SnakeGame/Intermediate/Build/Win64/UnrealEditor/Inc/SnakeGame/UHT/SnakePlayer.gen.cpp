@@ -27,6 +27,35 @@ SNAKEGAME_API UClass* Z_Construct_UClass_ASpawnableSphere_NoRegister();
 UPackage* Z_Construct_UPackage__Script_SnakeGame();
 // End Cross Module References
 
+// Begin Class ASnakePlayer Function Kill
+struct Z_Construct_UFunction_ASnakePlayer_Kill_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "SnakePlayer.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ASnakePlayer_Kill_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ASnakePlayer, nullptr, "Kill", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ASnakePlayer_Kill_Statics::Function_MetaDataParams), Z_Construct_UFunction_ASnakePlayer_Kill_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ASnakePlayer_Kill()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ASnakePlayer_Kill_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ASnakePlayer::execKill)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Kill();
+	P_NATIVE_END;
+}
+// End Class ASnakePlayer Function Kill
+
 // Begin Class ASnakePlayer Function OnBeginOverlap
 struct Z_Construct_UFunction_ASnakePlayer_OnBeginOverlap_Statics
 {
@@ -171,6 +200,7 @@ void ASnakePlayer::StaticRegisterNativesASnakePlayer()
 {
 	UClass* Class = ASnakePlayer::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "Kill", &ASnakePlayer::execKill },
 		{ "OnBeginOverlap", &ASnakePlayer::execOnBeginOverlap },
 		{ "SpawnSphere", &ASnakePlayer::execSpawnSphere },
 		{ "SpawnSpheres", &ASnakePlayer::execSpawnSpheres },
@@ -281,6 +311,7 @@ struct Z_Construct_UClass_ASnakePlayer_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_ASnakePlayer_Kill, "Kill" }, // 2575536076
 		{ &Z_Construct_UFunction_ASnakePlayer_OnBeginOverlap, "OnBeginOverlap" }, // 2317193862
 		{ &Z_Construct_UFunction_ASnakePlayer_SpawnSphere, "SpawnSphere" }, // 2983993422
 		{ &Z_Construct_UFunction_ASnakePlayer_SpawnSpheres, "SpawnSpheres" }, // 3809038561
@@ -370,10 +401,10 @@ ASnakePlayer::~ASnakePlayer() {}
 struct Z_CompiledInDeferFile_FID_Users_Santiago_Rocha_Documents_Github_SnakeProject_SnakeGame_Source_SnakeGame_SnakePlayer_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ASnakePlayer, ASnakePlayer::StaticClass, TEXT("ASnakePlayer"), &Z_Registration_Info_UClass_ASnakePlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASnakePlayer), 2006318584U) },
+		{ Z_Construct_UClass_ASnakePlayer, ASnakePlayer::StaticClass, TEXT("ASnakePlayer"), &Z_Registration_Info_UClass_ASnakePlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASnakePlayer), 983557209U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Santiago_Rocha_Documents_Github_SnakeProject_SnakeGame_Source_SnakeGame_SnakePlayer_h_1974227491(TEXT("/Script/SnakeGame"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Santiago_Rocha_Documents_Github_SnakeProject_SnakeGame_Source_SnakeGame_SnakePlayer_h_3058814750(TEXT("/Script/SnakeGame"),
 	Z_CompiledInDeferFile_FID_Users_Santiago_Rocha_Documents_Github_SnakeProject_SnakeGame_Source_SnakeGame_SnakePlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Santiago_Rocha_Documents_Github_SnakeProject_SnakeGame_Source_SnakeGame_SnakePlayer_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

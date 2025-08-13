@@ -20,7 +20,8 @@ struct FHitResult;
 #define FID_Users_Santiago_Rocha_Documents_Github_SnakeProject_SnakeGame_Source_SnakeGame_SnakePlayer_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execOnBeginOverlap); \
 	DECLARE_FUNCTION(execSpawnSphere); \
-	DECLARE_FUNCTION(execSpawnSpheres);
+	DECLARE_FUNCTION(execSpawnSpheres); \
+	DECLARE_FUNCTION(execKill);
 
 
 #define FID_Users_Santiago_Rocha_Documents_Github_SnakeProject_SnakeGame_Source_SnakeGame_SnakePlayer_h_21_INCLASS_NO_PURE_DECLS \

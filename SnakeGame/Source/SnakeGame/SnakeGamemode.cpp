@@ -51,7 +51,7 @@ void ASnakeGamemode::BeginPlay()
 
 	GetWorld()->GetTimerManager().SetTimer(AppleSpawnTimer, this, &ASnakeGamemode::SpawnApple, AppleSpawnRate, true);
 
-	GenerateLevelGeometry(1);
+	GenerateLevelGeometry(CurrentLevel);
 	
 }
 
@@ -80,96 +80,84 @@ void ASnakeGamemode::GenerateLevelGeometry(int32 Level)
 {
 	if (!GetWorld()) return;
 
-	if (!CubeMesh)
-	{
-		CubeMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cube.Cube"));
-		if (!CubeMesh)
-		{
-			UE_LOG(LogTemp, Error, TEXT("[GenerateLevelGeometry] Could not load /Engine/BasicShapes/Cube.Cube"));
-			return;
-		}
-	}
-
 	Level = FMath::Clamp(Level, 1, 3);
 	CurrentLevel = Level;
-	
+
 	ClearLevelGeometry();
 
 	float Shrink = 1.f;
 	switch (Level)
 	{
-		case 1: Shrink = 1.00f; break;
-		case 2: Shrink = 0.5f; break;
-		case 3: Shrink = 0.25f; break;
+	case 1: Shrink = 1.00f; break;
+	case 2: Shrink = 0.50f; break;
+	case 3: Shrink = 0.25f; break;
 	}
 
 	const float HalfX = BaseHalfExtentX * Shrink;
 	const float HalfY = BaseHalfExtentY * Shrink;
 
-	auto SpawnCube = [&](const FVector& Location, const FVector& Scale, const FRotator& Rot = FRotator::ZeroRotator) -> AStaticMeshActor*
+	const float EffectiveHeight = CeilingHeight * Shrink;
+
+	auto SpawnWallBP = [&](const FVector& Location, const FVector& Scale, const FRotator& Rot = FRotator::ZeroRotator) -> AActor*
 	{
-		FActorSpawnParameters Params;
-		AStaticMeshActor* S = GetWorld()->SpawnActor<AStaticMeshActor>(AStaticMeshActor::StaticClass(), Location, Rot, Params);
-		if (!S) return nullptr;
-
-		UStaticMeshComponent* MC = S->GetStaticMeshComponent();
-		MC->SetStaticMesh(CubeMesh);
-		MC->SetMobility(EComponentMobility::Static);
-		MC->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-		MC->SetCollisionProfileName(UCollisionProfile::BlockAll_ProfileName);
-
-		S->SetActorScale3D(Scale);
-		S->SetActorLocation(Location);
-		S->SetActorEnableCollision(true);
-
-		SpawnedGeometry.Add(S);
-		return S;
+		if (!WallBlueprintClass)
+		{
+			UE_LOG(LogTemp, Error, TEXT("[GenerateLevelGeometry] WallBlueprintClass not set!"));
+			return nullptr;
+		}
+		const FTransform T(Rot, Location, Scale);
+		AActor* Wall = GetWorld()->SpawnActorDeferred<AActor>(WallBlueprintClass, T);
+		if (!Wall) return nullptr;
+		Wall->FinishSpawning(T);
+		SpawnedGeometry.Add(Wall);
+		return Wall;
 	};
 
-	const float Unit = 100.f;
-	const float WallThkS = WallThickness / Unit; 
-	const float FloorThkS = WallThkS;
-	const float HeightS   = CeilingHeight / Unit;
+	const float Unit      = 100.f;
+	const float WallThkS  = WallThickness / Unit;
+	const float FloorThkS = WallThkS; 
+	const float HeightS   = EffectiveHeight / Unit;
 
 	const float SpanXS = (HalfX * 2.f + WallThickness * 2.f) / Unit;
 	const float SpanYS = (HalfY * 2.f + WallThickness * 2.f) / Unit;
 
 	{
-		const FVector Loc(0.f, 0.f, -CeilingHeight * 0.5f);
+		const FVector Loc(0.f, 0.f, -EffectiveHeight * 0.5f);
 		const FVector Scl((HalfX * 2.f) / Unit, (HalfY * 2.f) / Unit, FloorThkS);
-		SpawnCube(Loc, Scl);
+		SpawnWallBP(Loc, Scl);
 	}
 
 	{
-		const FVector Loc(0.f, 0.f, +CeilingHeight * 0.5f);
+		const FVector Loc(0.f, 0.f, +EffectiveHeight * 0.5f);
 		const FVector Scl((HalfX * 2.f) / Unit, (HalfY * 2.f) / Unit, FloorThkS);
-		SpawnCube(Loc, Scl);
+		SpawnWallBP(Loc, Scl);
 	}
 
 	{
 		const FVector Loc(-(HalfX + WallThickness * 0.5f), 0.f, 0.f);
-		const FVector Scl(WallThkS, SpanYS, HeightS);
-		SpawnCube(Loc, Scl);
+		const FVector Scl(WallThkS, SpanYS, HeightS); 
+		SpawnWallBP(Loc, Scl);
 	}
 
 	{
 		const FVector Loc(+(HalfX + WallThickness * 0.5f), 0.f, 0.f);
 		const FVector Scl(WallThkS, SpanYS, HeightS);
-		SpawnCube(Loc, Scl);
+		SpawnWallBP(Loc, Scl);
 	}
 
 	{
 		const FVector Loc(0.f, -(HalfY + WallThickness * 0.5f), 0.f);
 		const FVector Scl(SpanXS, WallThkS, HeightS);
-		SpawnCube(Loc, Scl);
+		SpawnWallBP(Loc, Scl);
 	}
 
 	{
 		const FVector Loc(0.f, +(HalfY + WallThickness * 0.5f), 0.f);
 		const FVector Scl(SpanXS, WallThkS, HeightS);
-		SpawnCube(Loc, Scl);
+		SpawnWallBP(Loc, Scl);
 	}
 }
+
 
 void ASnakeGamemode::ShowWidget(TSubclassOf<UUserWidget> WidgetClass)
 {

@@ -24,8 +24,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Level|Geometry")
 	void GenerateLevelGeometry(int32 Level);
 
-	UPROPERTY()
-	int32 CurrentLevel;
+	UPROPERTY(EditDefaultsOnly, Category="Level|Geometry")
+	TSubclassOf<AActor> WallBlueprintClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	int32 CurrentLevel = 1;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Snake")
 	TSubclassOf<ASnakePlayer> SnakePawnClass;

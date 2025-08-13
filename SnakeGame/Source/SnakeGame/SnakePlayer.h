@@ -38,6 +38,8 @@ public:
 	void ChangeDirection(const struct FInputActionValue& ActionValue);
 	void Rotate(char direction);
 	char UpdateWorldDirection (char currDir, char rotation);
+
+	UFUNCTION(BlueprintCallable)
 	void Kill();
 
 	void TestChangeState();
