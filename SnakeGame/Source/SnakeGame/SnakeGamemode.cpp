@@ -91,7 +91,8 @@ void ASnakeGamemode::GenerateLevelGeometry(int32 Level)
 	}
 
 	Level = FMath::Clamp(Level, 1, 3);
-
+	CurrentLevel = Level;
+	
 	ClearLevelGeometry();
 
 	float Shrink = 1.f;
@@ -189,15 +190,25 @@ void ASnakeGamemode::ShowWidget(TSubclassOf<UUserWidget> WidgetClass)
 }
 
 void ASnakeGamemode::SpawnApple()
-{
-	if (!AppleClass) return;
+{	if (!AppleClass) return;
 
 	if (!GameStateManager || GameStateManager->CurrentState != EGameState::Game) return;
 
+	float Shrink = 1.f;
+	switch (CurrentLevel)
+	{
+	case 1: Shrink = 1.00f; break;
+	case 2: Shrink = 0.5f; break;
+	case 3: Shrink = 0.25f; break;
+	}
+
+	const float HalfX = BaseHalfExtentX * Shrink;
+	const float HalfY = BaseHalfExtentY * Shrink;
+	
 	FVector SpawnLocation = FVector(
-		FMath::RandRange(-3000, 3000),
-		FMath::RandRange(-3000, 3000),
-		FMath::RandRange(0, 1000)
+		FMath::RandRange(-HalfX, HalfX),
+		FMath::RandRange(-HalfX, HalfX),
+		FMath::RandRange(-HalfY, HalfY)
 	);
 	GetWorld()->SpawnActor<AApple>(AppleClass, SpawnLocation, FRotator::ZeroRotator);
 }
