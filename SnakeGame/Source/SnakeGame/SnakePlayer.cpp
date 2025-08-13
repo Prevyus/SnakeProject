@@ -66,7 +66,11 @@ void ASnakePlayer::OnBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* O
 	
 	if (OtherActor->IsA(AApple::StaticClass()))
 	{
-		OtherActor->Destroy();
+		AApple* Apple = Cast<AApple>(OtherActor);
+		if (Apple)
+		{
+			Apple->OnAppleEaten.Broadcast(Apple);
+		}
 		SpawnSpheres(); // Grow snake
 	}
 }

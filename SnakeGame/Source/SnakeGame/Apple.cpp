@@ -13,3 +13,15 @@ AApple::AApple()
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	Mesh->SetupAttachment(RootComponent);
 }
+
+void AApple::BeginPlay()
+{
+	Super::BeginPlay();
+
+	OnAppleEaten.AddDynamic(this, &AApple::HandleEaten);
+}
+
+void AApple::HandleEaten(AApple* Apple)
+{
+	Apple->Destroy();
+}
