@@ -7,6 +7,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "SnakePlayer.h"
 #include "Apple.h"
+#include "Math/Rotator.h"
 #include "SnakeAIController.h"
 #include "Blueprint/UserWidget.h"
 #include "GeometryCollection/GeometryCollectionComponent.h"
@@ -97,14 +98,9 @@ void ASnakeGamemode::GenerateLevelGeometry(int32 Level)
 	const float HalfY = BaseHalfExtentY * Shrink;
 
 	const float EffectiveHeight = CeilingHeight * Shrink;
-
-	auto SpawnWallBP = [&](const FVector& Location, const FVector& Scale, const FRotator& Rot = FRotator::ZeroRotator) -> AActor*
+	auto SpawnWallBP = [&](const FVector& Location, const FVector& Scale, const FRotator& Rot) -> AActor*
 	{
-		if (!WallBlueprintClass)
-		{
-			UE_LOG(LogTemp, Error, TEXT("[GenerateLevelGeometry] WallBlueprintClass not set!"));
-			return nullptr;
-		}
+		if (!WallBlueprintClass) { UE_LOG(LogTemp, Error, TEXT("[GenerateLevelGeometry] WallBlueprintClass not set!")); return nullptr; }
 		const FTransform T(Rot, Location, Scale);
 		AActor* Wall = GetWorld()->SpawnActorDeferred<AActor>(WallBlueprintClass, T);
 		if (!Wall) return nullptr;
@@ -124,37 +120,37 @@ void ASnakeGamemode::GenerateLevelGeometry(int32 Level)
 	{
 		const FVector Loc(0.f, 0.f, -EffectiveHeight * 0.5f);
 		const FVector Scl((HalfX * 2.f) / Unit, (HalfY * 2.f) / Unit, FloorThkS);
-		SpawnWallBP(Loc, Scl);
+		SpawnWallBP(Loc, Scl, FRotator::ZeroRotator);
 	}
 
 	{
 		const FVector Loc(0.f, 0.f, +EffectiveHeight * 0.5f);
 		const FVector Scl((HalfX * 2.f) / Unit, (HalfY * 2.f) / Unit, FloorThkS);
-		SpawnWallBP(Loc, Scl);
+		SpawnWallBP(Loc, Scl, FRotator::ZeroRotator);
 	}
 
 	{
 		const FVector Loc(-(HalfX + WallThickness * 0.5f), 0.f, 0.f);
 		const FVector Scl(WallThkS, SpanYS, HeightS); 
-		SpawnWallBP(Loc, Scl);
+		SpawnWallBP(Loc, Scl, FRotator::ZeroRotator);
 	}
 
 	{
 		const FVector Loc(+(HalfX + WallThickness * 0.5f), 0.f, 0.f);
 		const FVector Scl(WallThkS, SpanYS, HeightS);
-		SpawnWallBP(Loc, Scl);
+		SpawnWallBP(Loc, Scl, FRotator::ZeroRotator);
 	}
 
 	{
 		const FVector Loc(0.f, -(HalfY + WallThickness * 0.5f), 0.f);
 		const FVector Scl(SpanXS, WallThkS, HeightS);
-		SpawnWallBP(Loc, Scl);
+		SpawnWallBP(Loc, Scl, FRotator::ZeroRotator);
 	}
 
 	{
 		const FVector Loc(0.f, +(HalfY + WallThickness * 0.5f), 0.f);
 		const FVector Scl(SpanXS, WallThkS, HeightS);
-		SpawnWallBP(Loc, Scl);
+		SpawnWallBP(Loc, Scl, FRotator::ZeroRotator);
 	}
 }
 
