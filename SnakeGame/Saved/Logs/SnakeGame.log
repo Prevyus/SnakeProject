@@ -2596,3 +2596,162 @@ LogConfig: Set CVar [[r.VRS.ContrastAdaptiveShading:1]]
 [2025.08.15-18.10.52:317][482]LogUObjectHash: Compacting FUObjectHashTables data took   1.09ms
 [2025.08.15-18.10.52:602][483]LogPlayLevel: Display: Destroying online subsystem :Context_17
 [2025.08.15-18.11.01:965][557]Cmd: SELECT NONE
+[2025.08.15-18.13.23:935][678]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 1335.521851
+[2025.08.15-18.13.24:933][681]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
+[2025.08.15-18.13.24:933][682]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 1336.190918, Update Interval: 321.616272
+[2025.08.15-18.19.07:423][268]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 1679.010620
+[2025.08.15-18.19.08:426][271]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
+[2025.08.15-18.19.08:426][271]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 1679.666504, Update Interval: 314.183777
+[2025.08.15-18.21.51:877][531]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_4
+[2025.08.15-18.21.51:983][533]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_5
+[2025.08.15-18.21.52:011][534]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_6
+[2025.08.15-18.21.52:038][535]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_7
+[2025.08.15-18.22.11:639][555]LogAssetEditorSubsystem: Opening Asset editor for Blueprint /Game/MyApple.MyApple
+[2025.08.15-18.22.11:639][555]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_8
+[2025.08.15-18.22.11:708][555]LogStreaming: Display: FlushAsyncLoading(578): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.15-18.22.14:369][558]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_9
+[2025.08.15-18.22.48:302][472]LogStreaming: Display: FlushAsyncLoading(580): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.15-18.22.49:939][568]LogStreaming: Display: FlushAsyncLoading(581): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.15-18.22.49:951][568]LogAudioDerivedData: Display: Building compressed audio format BINKA hash BINKA_SCVER_5028_R4DV_false_SR0_48000.000000_SR1_32000.000000_SR2_24000.000000_SR3_12000.000000_SR4_8000.000000_QMOD_1.000000_CQLT_-1_ASTH_0.000000_INLC_false_LCK1_0.000000_CSZE_65536_LCF_false_ZCS_256_MCSO_0_END wave Camera_Shutter...
+[2025.08.15-18.22.49:959][568]LogAudioDerivedData: Display: Camera_Shutter compressed to 8.81% (from 206KB to 18KB) with BINKA at Quality 80 with Quality Modifier 1.00
+[2025.08.15-18.22.49:959][568]LogAudio: Display: Chunk stats for (SoundWave /Engine/VREditor/Sounds/UI/Camera_Shutter.Camera_Shutter: Duration=0.00 secs, Channels=2), Settings(FirstChunkSize=4294967295 frames, InlineFirst=false, MaxChunkSize=262144), Chunks=2, Chunk0=28 bytes, Chunk1=18611 bytes, ChunkN=0)
+[2025.08.15-18.22.50:981][629]LogStreaming: Display: FlushAsyncLoading(582): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.15-18.22.50:983][629]LogAudioDerivedData: Display: Building compressed audio format BINKA hash BINKA_SCVER_5028_R4DV_false_SR0_48000.000000_SR1_32000.000000_SR2_24000.000000_SR3_12000.000000_SR4_8000.000000_QMOD_1.000000_CQLT_-1_ASTH_0.000000_INLC_false_LCK1_0.000000_CSZE_65536_LCF_false_ZCS_256_MCSO_0_END wave Click_on_Button...
+[2025.08.15-18.22.50:986][629]LogAudioDerivedData: Display: Click_on_Button compressed to 10.69% (from 106KB to 11KB) with BINKA at Quality 80 with Quality Modifier 1.00
+[2025.08.15-18.22.50:986][629]LogAudio: Display: Chunk stats for (SoundWave /Engine/VREditor/Sounds/UI/Click_on_Button.Click_on_Button: Duration=0.00 secs, Channels=2), Settings(FirstChunkSize=4294967295 frames, InlineFirst=false, MaxChunkSize=262144), Chunks=2, Chunk0=28 bytes, Chunk1=11661 bytes, ChunkN=0)
+[2025.08.15-18.22.52:045][690]LogStreaming: Display: FlushAsyncLoading(583): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.15-18.22.53:490][771]LogStreaming: Display: FlushAsyncLoading(584): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.15-18.22.53:492][771]LogAudioDerivedData: Display: Building compressed audio format BINKA hash BINKA_SCVER_5028_R4DV_false_SR0_48000.000000_SR1_32000.000000_SR2_24000.000000_SR3_12000.000000_SR4_8000.000000_QMOD_1.000000_CQLT_-1_ASTH_0.000000_INLC_false_LCK1_0.000000_CSZE_65536_LCF_false_ZCS_256_MCSO_0_END wave CompileFailed...
+[2025.08.15-18.22.53:496][771]LogAudioDerivedData: Display: CompileFailed compressed to 14.18% (from 87KB to 12KB) with BINKA at Quality 80 with Quality Modifier 1.00
+[2025.08.15-18.22.53:497][771]LogAudio: Display: Chunk stats for (SoundWave /Engine/EditorSounds/Notifications/CompileFailed.CompileFailed: Duration=0.00 secs, Channels=2), Settings(FirstChunkSize=4294967295 frames, InlineFirst=false, MaxChunkSize=262144), Chunks=2, Chunk0=28 bytes, Chunk1=12695 bytes, ChunkN=0)
+[2025.08.15-18.22.56:691][950]LogStreaming: Display: FlushAsyncLoading(585): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.15-18.23.00:336][159]LogStreaming: Display: FlushAsyncLoading(586): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.15-18.23.00:338][159]LogAudioDerivedData: Display: Building compressed audio format BINKA hash BINKA_SCVER_5028_R4DV_false_SR0_48000.000000_SR1_32000.000000_SR2_24000.000000_SR3_12000.000000_SR4_8000.000000_QMOD_1.000000_CQLT_-1_ASTH_0.000000_INLC_false_LCK1_0.000000_CSZE_65536_LCF_false_ZCS_256_MCSO_0_END wave Dockable_Window_Close...
+[2025.08.15-18.23.00:346][159]LogAudioDerivedData: Display: Dockable_Window_Close compressed to 12.67% (from 180KB to 22KB) with BINKA at Quality 80 with Quality Modifier 1.00
+[2025.08.15-18.23.00:347][159]LogAudio: Display: Chunk stats for (SoundWave /Engine/VREditor/Sounds/UI/Dockable_Window_Close.Dockable_Window_Close: Duration=0.00 secs, Channels=2), Settings(FirstChunkSize=4294967295 frames, InlineFirst=false, MaxChunkSize=262144), Chunks=2, Chunk0=28 bytes, Chunk1=23445 bytes, ChunkN=0)
+[2025.08.15-18.23.02:454][276]LogStreaming: Display: FlushAsyncLoading(587): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.15-18.23.02:455][276]LogAudioDerivedData: Display: Building compressed audio format BINKA hash BINKA_SCVER_5028_R4DV_false_SR0_48000.000000_SR1_32000.000000_SR2_24000.000000_SR3_12000.000000_SR4_8000.000000_QMOD_1.000000_CQLT_-1_ASTH_0.000000_INLC_false_LCK1_0.000000_CSZE_65536_LCF_false_ZCS_256_MCSO_0_END wave Dockable_Window_Drop...
+[2025.08.15-18.23.02:459][276]LogAudioDerivedData: Display: Dockable_Window_Drop compressed to 12.78% (from 119KB to 15KB) with BINKA at Quality 80 with Quality Modifier 1.00
+[2025.08.15-18.23.02:460][276]LogAudio: Display: Chunk stats for (SoundWave /Engine/VREditor/Sounds/UI/Dockable_Window_Drop.Dockable_Window_Drop: Duration=0.00 secs, Channels=2), Settings(FirstChunkSize=4294967295 frames, InlineFirst=false, MaxChunkSize=262144), Chunks=2, Chunk0=28 bytes, Chunk1=15575 bytes, ChunkN=0)
+[2025.08.15-18.23.05:062][421]LogUObjectHash: Compacting FUObjectHashTables data took   1.15ms
+[2025.08.15-18.23.05:431][441]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.08.15-18.23.05:524][441]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/MyApple] ([2] browsable assets)...
+[2025.08.15-18.23.05:549][441]OBJ SavePackage:     Rendered thumbnail for [Blueprint /Game/MyApple.MyApple]
+[2025.08.15-18.23.05:549][441]OBJ SavePackage: Finished generating thumbnails for package [/Game/MyApple]
+[2025.08.15-18.23.05:549][441]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/MyApple" FILE="../../../../../../Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Content/MyApple.uasset" SILENT=true
+[2025.08.15-18.23.05:554][441]LogSavePackage: Moving output files for package: /Game/MyApple
+[2025.08.15-18.23.05:556][441]LogSavePackage: Moving '../../../../../../Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Saved/MyApple687C57D4493965A219FD5097AF1E1130.tmp' to '../../../../../../Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Content/MyApple.uasset'
+[2025.08.15-18.23.05:586][441]LogFileHelpers: InternalPromptForCheckoutAndSave took 154.710 ms (total: 269.081 ms)
+[2025.08.15-18.23.05:690][441]LogContentValidation: Display: Starting to validate 1 assets
+[2025.08.15-18.23.05:690][441]LogContentValidation: Enabled validators:
+[2025.08.15-18.23.05:690][441]LogContentValidation: 	/Script/DataValidation.EditorValidator_Material
+[2025.08.15-18.23.05:690][441]LogContentValidation: 	/Script/DataValidation.DirtyFilesChangelistValidator
+[2025.08.15-18.23.05:690][441]LogContentValidation: 	/Script/DataValidation.EditorValidator_Localization
+[2025.08.15-18.23.05:690][441]LogContentValidation: 	/Script/DataValidation.PackageFileValidator
+[2025.08.15-18.23.05:690][441]LogContentValidation: 	/Script/DataValidation.WorldPartitionChangelistValidator
+[2025.08.15-18.23.05:690][441]LogContentValidation: 	/Script/InputBlueprintNodes.EnhancedInputUserWidgetValidator
+[2025.08.15-18.23.05:690][441]AssetCheck: /Game/MyApple Validating asset
+[2025.08.15-18.23.07:042][515]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2025.08.15-18.23.07:052][515]LogContentBundle: [TestingMap(Standalone)] Generating Streaming for 0 Content Bundles.
+[2025.08.15-18.23.07:054][515]LogWorldPartition: Display: GenerateStreaming for 'TestingMap' started...
+[2025.08.15-18.23.07:056][515]LogWorldPartition: Display: GenerateStreaming for 'TestingMap' took 2.525 ms (total: 43.656 ms)
+[2025.08.15-18.23.07:056][515]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2025.08.15-18.23.07:056][515]LogPlayLevel: Creating play world package: /Game/UEDPIE_0_TestingMap
+[2025.08.15-18.23.07:063][515]LogPlayLevel: PIE: StaticDuplicateObject took: (0.007289s)
+[2025.08.15-18.23.07:063][515]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/TestingMap.TestingMap to /Game/UEDPIE_0_TestingMap.TestingMap (0.007329s)
+[2025.08.15-18.23.07:078][515]LogUObjectHash: Compacting FUObjectHashTables data took   1.04ms
+[2025.08.15-18.23.07:080][515]LogChaosDD: Creating Chaos Debug Draw Scene for world TestingMap
+[2025.08.15-18.23.07:082][515]LogWorldPartition: ULevel::OnLevelLoaded(TestingMap)(bIsOwningWorldGameWorld=1, bIsOwningWorldPartitioned=1, InitializeForMainWorld=1, InitializeForEditor=0, InitializeForGame=1)
+[2025.08.15-18.23.07:082][515]LogWorldPartition: Display: WorldPartition initialize started...
+[2025.08.15-18.23.07:082][515]LogWorldPartition: UWorldPartition::Initialize : World = /Game/UEDPIE_0_TestingMap.TestingMap, World Type = PIE, IsMainWorldPartition = 1, Location = V(0), Rotation = R(0), IsEditor = 0, IsGame = 0, IsPIEWorldTravel = 0, IsCooking = 0
+[2025.08.15-18.23.07:082][515]LogWorldPartition: UWorldPartition::Initialize Context : World NetMode = Standalone, IsServer = 0, IsDedicatedServer = 0, IsServerStreamingEnabled = 0, IsServerStreamingOutEnabled = 0, IsUsingMakingVisibleTransaction = 0, IsUsingMakingInvisibleTransaction = 0
+[2025.08.15-18.23.07:089][515]LogWorldPartition: Display: WorldPartition initialize took 6.422 ms (total: 101.537 ms)
+[2025.08.15-18.23.07:089][515]LogPlayLevel: PIE: World Init took: (0.008426s)
+[2025.08.15-18.23.07:089][515]LogAudio: Display: Creating Audio Device:                 Id: 16, Scope: Unique, Realtime: True
+[2025.08.15-18.23.07:089][515]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2025.08.15-18.23.07:090][515]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2025.08.15-18.23.07:090][515]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2025.08.15-18.23.07:090][515]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2025.08.15-18.23.07:090][515]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2025.08.15-18.23.07:090][515]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2025.08.15-18.23.07:090][515]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2025.08.15-18.23.07:090][515]LogAudio: Display: AudioDevice MaxSources: 32
+[2025.08.15-18.23.07:090][515]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2025.08.15-18.23.07:090][515]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2025.08.15-18.23.07:090][515]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2025.08.15-18.23.07:092][515]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2025.08.15-18.23.07:178][515]LogAudioMixer: Display: Using Audio Hardware Device Headset Earphone (CORSAIR HS80 RGB Wireless Gaming Headset)
+[2025.08.15-18.23.07:179][515]LogAudioMixer: Display: Initializing Sound Submixes...
+[2025.08.15-18.23.07:179][515]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2025.08.15-18.23.07:179][515]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2025.08.15-18.23.07:179][515]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=16
+[2025.08.15-18.23.07:179][515]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=8, Samples=8192, InstanceID=16
+[2025.08.15-18.23.07:184][515]LogInit: FAudioDevice initialized with ID 16.
+[2025.08.15-18.23.07:184][515]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=16
+[2025.08.15-18.23.07:184][515]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=16
+[2025.08.15-18.23.07:184][515]LogAudio: Display: Audio Device (ID: 16) registered with world 'TestingMap'.
+[2025.08.15-18.23.07:184][515]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 16
+[2025.08.15-18.23.07:187][515]LogLoad: Game class is 'GamemodeBP_C'
+[2025.08.15-18.23.07:189][515]LogWorld: Bringing World /Game/UEDPIE_0_TestingMap.TestingMap up for play (max tick rate 60) at 2025.08.15-20.23.07
+[2025.08.15-18.23.07:189][515]LogWorld: Bringing up level for play took: 0.001619
+[2025.08.15-18.23.07:191][515]LogOnline: OSS: Created online subsystem instance for: :Context_24
+[2025.08.15-18.23.07:194][515]LogTemp: Warning: ShowWidget: MainMenuDisplay_C
+[2025.08.15-18.23.07:194][515]LogViewport: Display: Player bShowMouseCursor Changed, False -> True
+[2025.08.15-18.23.07:194][515]LogPlayerController: Error: InputMode:UIOnly - Attempting to focus Non-Focusable widget SObjectWidget [Widget.cpp(968)]!
+[2025.08.15-18.23.07:194][515]LogViewport: Display: Viewport MouseLockMode Changed, LockOnCapture -> LockInFullscreen
+[2025.08.15-18.23.07:194][515]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> NoCapture
+[2025.08.15-18.23.07:197][515]LogTemp: Warning: Snake AI Possessed: MySnakePlayer_C_1
+[2025.08.15-18.23.07:202][515]PIE: Server logged in
+[2025.08.15-18.23.07:203][515]PIE: Play in editor total start time 0.15 seconds.
+[2025.08.15-18.23.10:048][681]LogTemp: Warning: ShowWidget: NULL
+[2025.08.15-18.23.10:048][681]LogViewport: Display: Player bShowMouseCursor Changed, True -> False
+[2025.08.15-18.23.10:048][681]LogViewport: Display: Viewport MouseLockMode Changed, LockInFullscreen -> LockOnCapture
+[2025.08.15-18.23.10:048][681]LogViewport: Display: Viewport MouseCaptureMode Changed, NoCapture -> CapturePermanently
+[2025.08.15-18.23.18:507][178]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.08.15-18.23.18:507][178]LogWorld: BeginTearingDown for /Game/UEDPIE_0_TestingMap
+[2025.08.15-18.23.18:507][178]LogWorld: UWorld::CleanupWorld for TestingMap, bSessionEnded=true, bCleanupResources=true
+[2025.08.15-18.23.18:508][178]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.08.15-18.23.18:508][178]LogWorldPartition: UWorldPartition::Uninitialize : World = /Game/UEDPIE_0_TestingMap.TestingMap
+[2025.08.15-18.23.18:512][178]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2025.08.15-18.23.18:516][178]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.08.15-18.23.18:549][178]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.08.15-18.23.18:549][178]LogAudioMixer: Deinitializing Audio Bus Subsystem for audio device with ID 16
+[2025.08.15-18.23.18:549][178]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=16
+[2025.08.15-18.23.18:552][178]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=16
+[2025.08.15-18.23.18:561][178]LogUObjectHash: Compacting FUObjectHashTables data took   1.11ms
+[2025.08.15-18.23.18:607][179]LogPlayLevel: Display: Destroying online subsystem :Context_24
+[2025.08.15-18.23.22:254][386]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.08.15-18.23.22:343][386]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/MyApple] ([2] browsable assets)...
+[2025.08.15-18.23.22:343][386]OBJ SavePackage: Finished generating thumbnails for package [/Game/MyApple]
+[2025.08.15-18.23.22:343][386]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/MyApple" FILE="../../../../../../Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Content/MyApple.uasset" SILENT=true
+[2025.08.15-18.23.22:347][386]LogSavePackage: Moving output files for package: /Game/MyApple
+[2025.08.15-18.23.22:349][386]LogSavePackage: Moving '../../../../../../Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Saved/MyAppleA3F2798B46B69ED288D346AE22A02120.tmp' to '../../../../../../Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Content/MyApple.uasset'
+[2025.08.15-18.23.22:369][386]LogFileHelpers: InternalPromptForCheckoutAndSave took 115.731 ms (total: 384.813 ms)
+[2025.08.15-18.23.22:457][386]LogContentValidation: Display: Starting to validate 1 assets
+[2025.08.15-18.23.22:457][386]LogContentValidation: Enabled validators:
+[2025.08.15-18.23.22:457][386]LogContentValidation: 	/Script/DataValidation.EditorValidator_Material
+[2025.08.15-18.23.22:457][386]LogContentValidation: 	/Script/DataValidation.DirtyFilesChangelistValidator
+[2025.08.15-18.23.22:457][386]LogContentValidation: 	/Script/DataValidation.EditorValidator_Localization
+[2025.08.15-18.23.22:457][386]LogContentValidation: 	/Script/DataValidation.PackageFileValidator
+[2025.08.15-18.23.22:457][386]LogContentValidation: 	/Script/DataValidation.WorldPartitionChangelistValidator
+[2025.08.15-18.23.22:457][386]LogContentValidation: 	/Script/InputBlueprintNodes.EnhancedInputUserWidgetValidator
+[2025.08.15-18.23.22:457][386]AssetCheck: /Game/MyApple Validating asset
+[2025.08.15-18.23.31:908][534]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.08.15-18.23.31:986][534]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/MyApple] ([2] browsable assets)...
+[2025.08.15-18.23.31:986][534]OBJ SavePackage: Finished generating thumbnails for package [/Game/MyApple]
+[2025.08.15-18.23.31:986][534]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/MyApple" FILE="../../../../../../Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Content/MyApple.uasset" SILENT=true
+[2025.08.15-18.23.31:990][534]LogSavePackage: Moving output files for package: /Game/MyApple
+[2025.08.15-18.23.31:992][534]LogSavePackage: Moving '../../../../../../Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Saved/MyApple9ABE210743BC42806F097085E12060A1.tmp' to '../../../../../../Users/santi/OneDrive/Escritorio/Github/SnakeProject/SnakeGame/Content/MyApple.uasset'
+[2025.08.15-18.23.32:006][534]LogFileHelpers: InternalPromptForCheckoutAndSave took 97.343 ms (total: 482.156 ms)
+[2025.08.15-18.23.32:088][534]LogContentValidation: Display: Starting to validate 1 assets
+[2025.08.15-18.23.32:088][534]LogContentValidation: Enabled validators:
+[2025.08.15-18.23.32:088][534]LogContentValidation: 	/Script/DataValidation.EditorValidator_Material
+[2025.08.15-18.23.32:088][534]LogContentValidation: 	/Script/DataValidation.DirtyFilesChangelistValidator
+[2025.08.15-18.23.32:088][534]LogContentValidation: 	/Script/DataValidation.EditorValidator_Localization
+[2025.08.15-18.23.32:088][534]LogContentValidation: 	/Script/DataValidation.PackageFileValidator
+[2025.08.15-18.23.32:088][534]LogContentValidation: 	/Script/DataValidation.WorldPartitionChangelistValidator
+[2025.08.15-18.23.32:088][534]LogContentValidation: 	/Script/InputBlueprintNodes.EnhancedInputUserWidgetValidator
+[2025.08.15-18.23.32:088][534]AssetCheck: /Game/MyApple Validating asset
+[2025.08.15-18.23.37:810][874]LogWorld: UWorld::CleanupWorld for World_8, bSessionEnded=true, bCleanupResources=true
+[2025.08.15-18.23.37:810][874]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.08.15-18.23.37:881][874]LogUObjectHash: Compacting FUObjectHashTables data took   0.94ms
