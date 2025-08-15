@@ -2755,3 +2755,14 @@ LogConfig: Set CVar [[r.VRS.ContrastAdaptiveShading:1]]
 [2025.08.15-18.23.37:810][874]LogWorld: UWorld::CleanupWorld for World_8, bSessionEnded=true, bCleanupResources=true
 [2025.08.15-18.23.37:810][874]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
 [2025.08.15-18.23.37:881][874]LogUObjectHash: Compacting FUObjectHashTables data took   0.94ms
+[2025.08.15-18.23.57:641][177]LogAssetEditorSubsystem: Opening Asset editor for Blueprint /Game/MyApple.MyApple
+[2025.08.15-18.23.57:641][177]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_10
+[2025.08.15-18.25.18:587][850]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 2050.176758
+[2025.08.15-18.25.19:613][853]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
+[2025.08.15-18.25.19:613][853]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 2050.849365, Update Interval: 313.921936
+[2025.08.15-18.31.25:985][952]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 2417.571777
+[2025.08.15-18.31.26:972][955]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
+[2025.08.15-18.31.26:972][955]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 2418.223633, Update Interval: 317.803894
+[2025.08.15-18.37.31:390][ 48]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 2782.978271
+[2025.08.15-18.37.32:392][ 51]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
+[2025.08.15-18.37.32:392][ 52]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 2783.647461, Update Interval: 334.245422
