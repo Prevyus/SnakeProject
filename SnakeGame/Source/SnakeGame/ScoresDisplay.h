@@ -13,12 +13,10 @@ class SNAKEGAME_API UScoresDisplay : public UUserWidget
 
 public:
 	UFUNCTION(BlueprintCallable)
-	void SetText(const FString& NewText);
+	void SetTimeLeft(int32 Seconds);
 
 protected:
-	virtual void NativeConstruct() override;
-
-	UPROPERTY(meta = (BindWidget))
-	UTextBlock* MainText;
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* TimeText;
 
 };

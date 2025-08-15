@@ -1,20 +1,12 @@
 ﻿#include "ScoresDisplay.h"
 #include "Components/TextBlock.h"
 
-void UScoresDisplay::NativeConstruct()
+void UScoresDisplay::SetTimeLeft(int32 Seconds)
 {
-	Super::NativeConstruct();
-
-	if (MainText)
+	const int32 M = Seconds / 60;
+	const int32 S = Seconds % 60;
+	if (TimeText)
 	{
-		MainText->SetText(FText::FromString("Initialized"));
-	}
-}
-
-void UScoresDisplay::SetText(const FString& NewText)
-{
-	if (MainText)
-	{
-		MainText->SetText(FText::FromString(NewText));
+		TimeText->SetText(FText::FromString(FString::Printf(TEXT("%02d:%02d"), M, S)));
 	}
 }

@@ -89,9 +89,14 @@ void ASnakePlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	ASnakeGamemode* GameMode = Cast<ASnakeGamemode>(UGameplayStatics::GetGameMode(this));
-	if (!GameMode || !GameMode->GameStateManager) return;
-	if (GameMode->GameStateManager->CurrentState != EGameState::Game) return;
+	if (const ASnakeGamemode* GM = Cast<ASnakeGamemode>(UGameplayStatics::GetGameMode(this)))
+	{
+		if (!GM->IsGameplayActive()) return;
+	}
+
+	// ASnakeGamemode* GameMode = Cast<ASnakeGamemode>(UGameplayStatics::GetGameMode(this));
+	// if (!GameMode || !GameMode->GameStateManager) return;
+	// if (GameMode->GameStateManager->CurrentState != EGameState::Game) return;
 	
 	if (dirChangeDelayTimer > 0) dirChangeDelayTimer -= DeltaTime;
 
