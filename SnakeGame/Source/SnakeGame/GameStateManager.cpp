@@ -17,7 +17,6 @@ void AGameStateManager::SetGameState(EGameState NewState)
 	ASnakeGamemode* GameMode = Cast<ASnakeGamemode>(UGameplayStatics::GetGameMode(this));
 	if (!GameMode) return;
 
-	// Optional: trigger UI switch or game logic
 	/*
 	switch (NewState)
 	{

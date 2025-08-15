@@ -21,19 +21,15 @@ class SNAKEGAME_API ASnakePlayer : public APawn
 	GENERATED_BODY()
 	
 public:
-	// Sets default values for this pawn's properties
 	ASnakePlayer();
 	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	UPROPERTY(EditAnywhere)
 	class UFloatingPawnMovement* Movement;
 	
-	// Functions
 	void Move();
 	void ChangeDirection(const struct FInputActionValue& ActionValue);
 	void Rotate(char direction);
@@ -65,7 +61,6 @@ public:
 	void SpawnSphere();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
 
@@ -99,7 +94,6 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* SceneComponent;
 	
-	//Variables
 	int32 JumpCount = 0;
 	char pastDir = ' ';
 	FRotator TargetRotation;

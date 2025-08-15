@@ -31,7 +31,6 @@ void ASnakePlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
     
-    // Create these objects here and not in constructor because we only need them on the client.
     PawnMappingContext = NewObject<UInputMappingContext>(this);
     
     MoveAction = NewObject<UInputAction>(this);

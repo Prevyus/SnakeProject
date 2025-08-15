@@ -30,8 +30,8 @@ void AApple::HandleEaten(AApple* Apple)
 		UNiagaraFunctionLibrary::SpawnSystemAtLocation(
 			GetWorld(),
 			EatAppleEffect,
-			GetActorLocation(),  // Effect location
-			GetActorRotation()   // Effect rotation
+			GetActorLocation(),
+			GetActorRotation()
 		);
 	}
 	

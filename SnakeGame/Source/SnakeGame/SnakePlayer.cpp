@@ -16,13 +16,10 @@
 #include "Components/PointLightComponent.h"
 #include "EntitySystem/MovieSceneEntitySystemRunner.h"
 
-// Sets default values
 ASnakePlayer::ASnakePlayer()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//Create Components
 	Sphere = CreateDefaultSubobject<USphereComponent>("Sphere");
 	Sphere->InitSphereRadius(50);
 	Collider = CreateDefaultSubobject<USphereComponent>("Collider");
@@ -32,7 +29,6 @@ ASnakePlayer::ASnakePlayer()
 	SceneComponent = CreateDefaultSubobject<USceneComponent>("SpringArm");
 	Movement = CreateDefaultSubobject<UFloatingPawnMovement>("Movement");
 
-	//Setup Attachments 
 	RootComponent = Sphere;
 	Collider->SetupAttachment(RootComponent);
 	Mesh->SetupAttachment(RootComponent);
@@ -40,7 +36,6 @@ ASnakePlayer::ASnakePlayer()
 	SceneComponent->SetupAttachment(RootComponent);
 }
 
-// Called when the game starts or when spawned
 void ASnakePlayer::BeginPlay()
 {
 	Super::BeginPlay();
@@ -80,11 +75,10 @@ void ASnakePlayer::OnBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* O
 		{
 			Apple->OnAppleEaten.Broadcast(Apple);
 		}
-		SpawnSpheres(); // Grow snake
+		SpawnSpheres();
 	}
 }
 
-// Called every frame
 void ASnakePlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);

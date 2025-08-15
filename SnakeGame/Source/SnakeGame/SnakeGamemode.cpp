@@ -138,11 +138,7 @@ void ASnakeGamemode::OnLevelTimerTick()
 
 	if (RemainingSeconds <= 0)
 	{
-		// Time’s up for this level — stop and trigger your “advance level / decide winner” logic
 		StopLevelTimer();
-
-		// Example hook you already have elsewhere:
-		// AdvanceLevelOrEndMatch();
 	}
 }
 

@@ -27,7 +27,7 @@ public:
 	class UInputAction* RotateAction;
 
 	UPROPERTY()
-	class UInputAction* ChangeStateAction; // or UseItemAction
+	class UInputAction* ChangeStateAction;
 
 	UPROPERTY()
 	class UInputAction* SpawnSphereAction;

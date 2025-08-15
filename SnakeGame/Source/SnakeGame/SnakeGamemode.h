@@ -26,15 +26,12 @@ public:
 	
 	ASnakeGamemode();
 	
-	// Call this when you enter Game state
 	UFUNCTION(BlueprintCallable)
 	void StartLevelTimer(int32 DurationSeconds = 60);
 
-	// If you already have state gating, call StopLevelTimer() when leaving Game
 	UFUNCTION(BlueprintCallable)
 	void StopLevelTimer();
 
-	// Use this to show the HUD when state is Game
 	UFUNCTION(BlueprintCallable)
 	void ShowInGameHUD(bool bShow);
 	
